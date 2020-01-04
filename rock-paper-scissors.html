@@ -1,0 +1,85 @@
+<script>
+
+let computerSelection;
+let playerSelection;
+
+function computerPlay(){
+    computerSelection = Math.ceil(Math.random() * 3);
+        if (computerSelection == 1){
+            computerSelection = ("r");
+            return computerSelection;
+    }   else if (computerSelection == 2){
+            computerSelection = ("p");
+            return computerSelection;
+    }   else{
+            computerSelection = ("s");
+            return computerSelection;
+    }
+}
+
+function playerPlay(){
+    playerSelection = prompt ("Pick rock, paper or scissors.");
+        if (playerSelection == "rock"){
+            playerSelection = ("r");
+            return playerSelection;
+        }else if ( playerSelection == "paper"){
+            playerSelection = ("p");
+            return playerSelection;
+        }else if (playerSelection == "scissors"){
+            playerSelection = ("s");
+            return playerSelection;
+        }else{
+            alert ("Not a valid selection.")
+        }                                                     
+}
+
+function win(){
+    console.log("Player wins!");
+}
+
+function lose(){
+    console.log ("Player loses!");
+}
+
+function tie(){
+    console.log ("It's a tie!");
+}
+
+function playRound(){
+    playerPlay();
+    computerPlay();
+    console.log(computerSelection);
+    console.log(playerSelection); 
+    switch (playerSelection + computerSelection){
+        case "rs":
+        case "pr":
+        case "sp":
+            win();
+            return;
+            break;
+        case "rp":
+        case "ps":
+        case "sr":
+            lose();
+            return;
+            break;
+        case "rr":
+        case "pp":
+        case "ss":
+            tie();
+            return;
+            break;
+        default:
+            console.log("Something isn't working properly");
+    }
+}
+
+function game(){
+    for (let i=0; i<5; i++){
+        playRound();
+    }
+}
+
+game()
+
+</script>
